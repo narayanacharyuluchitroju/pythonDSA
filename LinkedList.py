@@ -80,7 +80,21 @@ class LinkedList:
                 pre = temp
                 temp = temp.next
 
-    def set_value(self,index,value):
+    def get(self, index):
+        if self.length < index:
+            return None
+        elif self.length - 1 == index:
+            return self.tail.value
+        else:
+            count = 0
+            temp = self.head
+            while temp.next:
+                if count == index:
+                    return temp.value
+                count += 1
+                temp = temp.next
+
+    def set_value(self, index, value):
         new_node = Node(value)
         if self.length < index:
             return "Incorrect Index Value"
@@ -105,6 +119,25 @@ class LinkedList:
                         self.tail = new_node
                     return None
                 act_index += 1
+                pre = temp
+                temp = temp.next
+
+    def remove(self, index):
+        if index < 0 or index > self.length:
+            return None
+        elif index == 0:
+            temp = self.head
+            self.head = temp.next
+        else:
+            pre = temp = self.head
+            count = 0
+            while pre.next:
+                if count == index:
+                    if temp.next is None:
+                        pre.next = None
+                    else:
+                        pre.next = temp.next
+                count += 1
                 pre = temp
                 temp = temp.next
 
