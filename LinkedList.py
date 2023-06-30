@@ -80,9 +80,37 @@ class LinkedList:
                 pre = temp
                 temp = temp.next
 
+    def set_value(self,index,value):
+        new_node = Node(value)
+        if self.length < index:
+            return "Incorrect Index Value"
+        elif self.length == 1:
+            self.head = self.tail = new_node
+        elif index == 0:
+            temp = self.head
+            self.head = new_node
+            new_node.next = temp.next
+        else:
+            pre = self.head
+            temp = self.head
+            act_index = 0
+            while pre.next:
+                # print(temp.value)
+                if act_index == index:
+                    pre.next = new_node
+                    if temp.next:
+                        new_node.next = temp.next
+                    else:
+                        new_node.next = None
+                        self.tail = new_node
+                    return None
+                act_index += 1
+                pre = temp
+                temp = temp.next
+
     def print_list(self):
         print("List: ", end="")
         temp = self.head
-        while temp is not None:
+        while temp:
             print(temp.value, end=" ")
             temp = temp.next
