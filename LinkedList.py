@@ -141,6 +141,17 @@ class LinkedList:
                 pre = temp
                 temp = temp.next
 
+    def reverse(self):
+        temp = self.head
+        self.head = self.tail
+        self.tail = temp
+        before = None
+        for _ in range(self.length):
+            after = temp.next
+            temp.next = before
+            before = temp
+            temp = after
+
     def print_list(self):
         print("List: ", end="")
         temp = self.head
