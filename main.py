@@ -7,6 +7,6 @@ my_linked_list.print_list()
 
 print(my_linked_list.pop().value)
 # # (1) Item -  Returns 1 Node
-print(my_linked_list.pop().value)
+print(my_linked_list.pop_first().value)
 # (0) Items - Returns None
 print(my_linked_list.pop())

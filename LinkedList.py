@@ -52,14 +52,20 @@ class LinkedList:
         self.length -= 1
         return popped_element
 
-
     def pop_first(self):
         if self.head is None:
-            print("List is empty")
             return None
+        elif self.length == 1:
+            popped_element = self.head
+            self.head = self.tail = None
+            self.length -= 1
+            return popped_element
         else:
+            popped_element = self.head
             temp = self.head
             self.head = temp.next
+            self.length -= 1
+            return popped_element
 
     #
     def insert(self, index, value):
