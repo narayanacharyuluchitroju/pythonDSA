@@ -37,17 +37,20 @@ class LinkedList:
             return None
 
         if self.length == 1:
+            popped_element = self.head
             self.head = self.tail = None
-            return None
+            return popped_element
 
         pre = temp = self.head
         while temp.next:
             pre = temp
             temp = temp.next
-
+        popped_element = self.tail
         self.tail = pre
         self.tail.next = None
         self.length -= 1
+        return popped_element
+
 
     def pop_first(self):
         if self.head is None:
